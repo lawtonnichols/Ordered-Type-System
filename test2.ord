@@ -1,0 +1,9 @@
+def f1(arg1: Int, arg2: Boolean, arg3: (Boolean, Int) => Int): Int = {
+    var x: Int = arg3(arg2, arg1)
+    print (x)
+}
+
+def f2(arg1: Boolean, arg2: Int, arg3: (Boolean, Int) => Int): Int = {
+    var x: Int = arg3(arg1, arg2)
+    print (x)
+}

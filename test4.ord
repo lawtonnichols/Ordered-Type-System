@@ -1,0 +1,19 @@
+def count(to: Int): Int = {
+    double(to)
+    if (isZero(to)) {
+        to + 0
+    } else {
+        double(to)
+        count(to - 1)
+        print(to)
+    }
+}
+
+def intermediate(x: Int, f: (Int) => Int): Int = {
+    f(x)
+}
+
+def main(): Int = {
+    intermediate(10, count)
+    0
+}

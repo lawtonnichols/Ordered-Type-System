@@ -1,0 +1,63 @@
+// natural numbers only
+def lessThan(x: Int, y: Int): Boolean = {
+    double(y)
+    double(y)
+    if (or(isZero(y), isZero(y-1))) {
+        if (isZero(y)) {
+            x
+            false // y is 0 -- x can never be less -- false
+        } else {
+            if (isZero(x)) {true} // x = 0, y = 1 -- true
+            else {false} // x is at least one, and y is one -- false
+        }
+    } else {
+        greaterThan((y - 1), if (isZero(double(x))) {x x} else {
+            if (isZero(x)) {x} // still works because y is guaranteed to be at least 2
+            else {x-1}
+        })
+    }
+}
+
+def greaterThan(x: Int, y: Int): Boolean = {
+    double(y)
+    if (isZero(y)) {
+        y
+        if (isZero(x)) {
+            false // x == y -- false
+        } else {
+            true // x > 0, y == 0 -- true
+        }
+    } else {
+        lessThan(y, x)
+    }
+}
+
+def or(a: Boolean, b: Boolean): Boolean = {
+    if (b) {
+        a
+        true
+    } 
+    else { 
+        a
+    }
+}
+
+def main(): Int = {
+    print(lessThan(0, 0))     // false
+    print(greaterThan(0, 0))  // false
+    print(lessThan(0, 1))     // true
+    print(greaterThan(0, 1))  // false
+    print(lessThan(1, 0))     // false
+    print(greaterThan(1, 0))  // true
+    print(lessThan(2, 3))     // true  
+    print(greaterThan(2, 3))  // false 
+    print(lessThan(3, 2))     // false
+    print(greaterThan(3, 2))  // true
+    print(lessThan(7, 5))     // false
+    print(greaterThan(7, 5))  // true
+    print(lessThan(5, 7))     // true
+    print(greaterThan(5, 7))  // false
+    print(lessThan(8, 8))     // false
+    print(greaterThan(8, 8))  // false
+    0
+}

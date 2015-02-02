@@ -1,0 +1,20 @@
+def f1(arg1: Boolean, arg2: Int, arg3: (Int, Boolean) => Int): Int = {
+    var x: Int = arg3(arg2, arg1)
+    var y: Int = x
+    y = y + 7
+    print (y)
+}
+
+def anotherFunction(i: Int, b: Boolean): Int = {
+    if (b) {
+        i
+    } else {
+        i + (1 + 1)
+    }
+}
+
+def main(): Int = {
+    f1(true, 5, anotherFunction)
+    f1(false, 5, anotherFunction)
+    0
+}
