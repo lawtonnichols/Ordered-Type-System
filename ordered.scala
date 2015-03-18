@@ -345,7 +345,10 @@ object Ordered extends JavaTokenParsers with PackratParsers {
 
 	/******** END TYPE CHECKER ********/
 
+	/******** BEGIN  EVALUATOR ********/
+
 	def evaluate(l: ListOfFunctionDefs): Unit = {
+		// create a function map, taking function names to function definitions
 		val functionMap = l.l.foldLeft(Map[Var, FunctionDef]())((acc, x) => acc + (x.name -> x))
 		if (!functionMap.contains(Var("main"))) {
 			println("need a main function")
@@ -398,6 +401,7 @@ object Ordered extends JavaTokenParsers with PackratParsers {
 		}
 	}
 
+	// evaluate an individual expression
 	def evaluate(e: Expr, variableMap: Map[Var,Value], functionMap: Map[Var, FunctionDef]): (Value, Map[Var,Value]) = {
 		e match {
 			case DeclAssignment(v, t, e) => {
@@ -441,7 +445,7 @@ object Ordered extends JavaTokenParsers with PackratParsers {
 				(res, newMap)
 			}
 			case Doubl(v) => {
-				(IntValue(-1), variableMap) // dummy value
+				(IntValue(-1), variableMap) // dummy value, just because this has to evaluate to something
 			}
 			case IfElse(pred, ifcase, elsecase) => {
 				val (b, newMap) = evaluate(pred, variableMap, functionMap)
@@ -469,6 +473,8 @@ object Ordered extends JavaTokenParsers with PackratParsers {
 			}
 		}
 	}
+
+	/******** END EVALUATOR ********/
 
 	def main(args: Array[String]): Unit = {
 		if (args.length != 1) {
